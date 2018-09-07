@@ -7,5 +7,7 @@ $instance_name = "es-${::hostname}"
 elasticsearch::instance { $instance_name:
   config => {
     'network.host' => $::networking['interfaces']['enp0s8']['ip'],
+    'script.inline' => true,
+    'indices.query.bool.max_clause_count' => 1000000000,
   }
 }
